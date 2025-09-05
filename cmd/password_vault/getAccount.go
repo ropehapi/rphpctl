@@ -1,4 +1,4 @@
-package cmd
+package password_vault
 
 import (
 	"fmt"
@@ -9,15 +9,18 @@ import (
 	"github.com/spf13/cobra"
 )
 
-var id string
-
-// deleteCredentialsCmd represents the login command
-var deleteCredentialsCmd = &cobra.Command{
-	Use:   "delete-credentials",
-	Short: "Deleta um par de login/senha",
-	Long:  `Faz uma requisição para deleter logins/senhas`,
+// GetAccountCmd represents the login command
+var GetAccountCmd = &cobra.Command{
+	Use:   "get",
+	Short: "Lista pares de login/senha",
+	Long:  `Faz uma requisição para listar os logins/senhas`,
 	Run: func(cmd *cobra.Command, args []string) {
-		req, err := http.NewRequest("DELETE", os.Getenv("PASSWORD_VAULT_HOST")+":"+os.Getenv("PASSWORD_VAULT_PORT")+"/account/"+id, nil)
+		uri := "/account"
+		if name != "" {
+			uri += "/" + name
+		}
+
+		req, err := http.NewRequest("GET", os.Getenv("PASSWORD_VAULT_HOST")+":"+os.Getenv("PASSWORD_VAULT_PORT")+uri, nil)
 		if err != nil {
 			fmt.Println("Erro:", err)
 			return
@@ -40,5 +43,5 @@ var deleteCredentialsCmd = &cobra.Command{
 }
 
 func init() {
-	deleteCredentialsCmd.Flags().StringVarP(&id, "id", "i", "", "Id da conta")
+	GetAccountCmd.Flags().StringVarP(&name, "name", "n", "", "Nome da conta")
 }

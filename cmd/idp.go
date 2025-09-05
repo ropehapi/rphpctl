@@ -2,6 +2,7 @@ package cmd
 
 import (
 	"fmt"
+	"github.com/ropehapi/rphpctl/cmd/idp"
 
 	"github.com/spf13/cobra"
 )
@@ -18,5 +19,5 @@ var idpCmd = &cobra.Command{
 
 func init() {
 	rootCmd.AddCommand(idpCmd)
-	idpCmd.AddCommand(loginCmd)
+	idpCmd.AddCommand(idp.LoginCmd)
 }

@@ -1,4 +1,4 @@
-package cmd
+package idp
 
 import (
 	"bytes"
@@ -13,8 +13,8 @@ import (
 
 var username, password string
 
-// loginCmd represents the login command
-var loginCmd = &cobra.Command{
+// LoginCmd represents the login command
+var LoginCmd = &cobra.Command{
 	Use:   "login",
 	Short: "Gera um token JWT no IDP",
 	Long:  `Faz uma requisição de login no IDP, passando login e senha. Se informados corretamente, a API deve retornar um token JWT`,
@@ -34,6 +34,6 @@ var loginCmd = &cobra.Command{
 }
 
 func init() {
-	loginCmd.Flags().StringVarP(&username, "username", "u", "", "Nome de usuário")
-	loginCmd.Flags().StringVarP(&password, "password", "p", "", "Senha")
+	LoginCmd.Flags().StringVarP(&username, "username", "u", "", "Nome de usuário")
+	LoginCmd.Flags().StringVarP(&password, "password", "p", "", "Senha")
 }

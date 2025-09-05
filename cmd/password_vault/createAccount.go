@@ -1,4 +1,4 @@
-package cmd
+package password_vault
 
 import (
 	"bytes"
@@ -11,11 +11,11 @@ import (
 	"github.com/spf13/cobra"
 )
 
-var name, login string
+var name, login, password string
 
-// createCredentialsCmd represents the login command
-var createCredentialsCmd = &cobra.Command{
-	Use:   "create-credentials",
+// CreateAccountCmd represents the login command
+var CreateAccountCmd = &cobra.Command{
+	Use:   "create",
 	Short: "Cria um par login/senha",
 	Long:  `Faz uma requisição de criar conta no password vault`,
 	Run: func(cmd *cobra.Command, args []string) {
@@ -45,7 +45,7 @@ var createCredentialsCmd = &cobra.Command{
 }
 
 func init() {
-	createCredentialsCmd.Flags().StringVarP(&name, "name", "n", "", "Nome da conta")
-	createCredentialsCmd.Flags().StringVarP(&login, "login", "l", "", "Login")
-	createCredentialsCmd.Flags().StringVarP(&password, "password", "p", "", "Senha")
+	CreateAccountCmd.Flags().StringVarP(&name, "name", "n", "", "Nome da conta")
+	CreateAccountCmd.Flags().StringVarP(&login, "login", "l", "", "Login")
+	CreateAccountCmd.Flags().StringVarP(&password, "password", "p", "", "Senha")
 }

@@ -1,4 +1,4 @@
-package cmd
+package password_vault
 
 import (
 	"bytes"
@@ -11,9 +11,9 @@ import (
 	"github.com/spf13/cobra"
 )
 
-// updateCredentialsCmd represents the login command
-var updateCredentialsCmd = &cobra.Command{
-	Use:   "update-credentials",
+// UpdateAccountCmd represents the login command
+var UpdateAccountCmd = &cobra.Command{
+	Use:   "update",
 	Short: "Atualiza um par login/senha",
 	Long:  `Faz uma requisição de atualizar conta no password vault`,
 	Run: func(cmd *cobra.Command, args []string) {
@@ -45,8 +45,8 @@ var updateCredentialsCmd = &cobra.Command{
 }
 
 func init() {
-	updateCredentialsCmd.Flags().StringVarP(&id, "id", "i", "", "Id da conta")
-	updateCredentialsCmd.Flags().StringVarP(&name, "name", "n", "", "Nome da conta")
-	updateCredentialsCmd.Flags().StringVarP(&login, "login", "l", "", "Login")
-	updateCredentialsCmd.Flags().StringVarP(&password, "password", "p", "", "Senha")
+	UpdateAccountCmd.Flags().StringVarP(&id, "id", "i", "", "Id da conta")
+	UpdateAccountCmd.Flags().StringVarP(&name, "name", "n", "", "Nome da conta")
+	UpdateAccountCmd.Flags().StringVarP(&login, "login", "l", "", "Login")
+	UpdateAccountCmd.Flags().StringVarP(&password, "password", "p", "", "Senha")
 }
