@@ -19,4 +19,7 @@ var vaultCmd = &cobra.Command{
 func init() {
 	rootCmd.AddCommand(vaultCmd)
 	vaultCmd.AddCommand(createCredentialsCmd)
+	vaultCmd.AddCommand(getCredentialsCmd)
+	vaultCmd.AddCommand(updateCredentialsCmd)
+	vaultCmd.AddCommand(deleteCredentialsCmd)
 }
