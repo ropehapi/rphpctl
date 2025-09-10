@@ -23,4 +23,9 @@ func init() {
 	passwordVaultCmd.AddCommand(password_vault.GetAccountCmd)
 	passwordVaultCmd.AddCommand(password_vault.UpdateAccountCmd)
 	passwordVaultCmd.AddCommand(password_vault.DeleteAccountCmd)
+
+	passwordVaultCmd.AddCommand(password_vault.GetAccountCodesCmd)
+	passwordVaultCmd.AddCommand(password_vault.CreateAccountCodesCmd)
+	passwordVaultCmd.AddCommand(password_vault.UpdateAccountCodesCmd)
+	passwordVaultCmd.AddCommand(password_vault.DeleteAccountCodesCmd)
 }

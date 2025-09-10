@@ -22,6 +22,9 @@ import (
 )
 
 func main() {
+	//TODO: Implementar comunicação com Account codes
+	//TODO: Implementar comunicação com o finance manager
+
 	err := godotenv.Load()
 	if err != nil {
 		log.Fatal("Error loading .env file")

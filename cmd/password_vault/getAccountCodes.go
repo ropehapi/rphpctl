@@ -9,15 +9,18 @@ import (
 	"github.com/spf13/cobra"
 )
 
-var id string
-
-// DeleteAccountCmd represents the login command
-var DeleteAccountCmd = &cobra.Command{
-	Use:   "delete",
-	Short: "Deleta um par de login/senha",
-	Long:  `Faz uma requisição para deletar logins/senhas`,
+// GetAccountCodesCmd represents the login command
+var GetAccountCodesCmd = &cobra.Command{
+	Use:   "get-codes",
+	Short: "Lista palavras chave de uma conta",
+	Long:  `Faz uma requisição para listar as palavras chave de uma conta`,
 	Run: func(cmd *cobra.Command, args []string) {
-		req, err := http.NewRequest("DELETE", os.Getenv("PASSWORD_VAULT_HOST")+":"+os.Getenv("PASSWORD_VAULT_PORT")+"/account/"+id, nil)
+		uri := "/account-codes"
+		if name != "" {
+			uri += "/" + name
+		}
+
+		req, err := http.NewRequest("GET", os.Getenv("PASSWORD_VAULT_HOST")+":"+os.Getenv("PASSWORD_VAULT_PORT")+uri, nil)
 		if err != nil {
 			fmt.Println("Erro:", err)
 			return
@@ -40,5 +43,5 @@ var DeleteAccountCmd = &cobra.Command{
 }
 
 func init() {
-	DeleteAccountCmd.Flags().StringVarP(&id, "id", "i", "", "Id da conta")
+	GetAccountCodesCmd.Flags().StringVarP(&name, "name", "n", "", "Nome da conta")
 }
