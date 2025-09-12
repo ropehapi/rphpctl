@@ -22,8 +22,8 @@ import (
 )
 
 func main() {
-	//TODO: Implementar comunicação com Account codes
 	//TODO: Implementar comunicação com o finance manager
+	//TODO: Implementar formatação de json
 
 	err := godotenv.Load()
 	if err != nil {
