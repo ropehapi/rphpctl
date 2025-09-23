@@ -2,6 +2,7 @@ package cmd
 
 import (
 	"fmt"
+	"github.com/ropehapi/rphpctl/cmd/finance_manager/account"
 	"github.com/ropehapi/rphpctl/cmd/finance_manager/transfer"
 
 	"github.com/spf13/cobra"
@@ -23,4 +24,9 @@ func init() {
 	financeManagerCmd.AddCommand(transfer.CreateCashinCmd)
 	financeManagerCmd.AddCommand(transfer.CreateCashoutCmd)
 	financeManagerCmd.AddCommand(transfer.DeleteTransfersCmd)
+
+	financeManagerCmd.AddCommand(account.CreateAccountCmd)
+	financeManagerCmd.AddCommand(account.GetAccountsCmd)
+	financeManagerCmd.AddCommand(account.DeleteAccountCmd)
+	financeManagerCmd.AddCommand(account.UpdateAccountCmd)
 }
