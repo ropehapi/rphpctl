@@ -5,6 +5,7 @@ import (
 	"github.com/ropehapi/rphpctl/cmd/finance_manager/account"
 	payment_methods "github.com/ropehapi/rphpctl/cmd/finance_manager/paymentMethods"
 	"github.com/ropehapi/rphpctl/cmd/finance_manager/transfer"
+	"github.com/ropehapi/rphpctl/cmd/finance_manager/debt"
 
 	"github.com/spf13/cobra"
 )
@@ -35,4 +36,8 @@ func init() {
 	financeManagerCmd.AddCommand(payment_methods.GetPaymentMethodCmd)
 	financeManagerCmd.AddCommand(payment_methods.DeletePaymentMethodCmd)
 	financeManagerCmd.AddCommand(payment_methods.UpdatePaymentMethodCmd)
+
+	financeManagerCmd.AddCommand(debt.GetDebtsCmd)
+	financeManagerCmd.AddCommand(debt.DeleteDebtCmd)
+	financeManagerCmd.AddCommand(debt.PayDebtsCmd)
 }

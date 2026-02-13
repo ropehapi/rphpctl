@@ -3,7 +3,7 @@
 CLI (Command Line Interface) escrita em Go com [Cobra](https://github.com/spf13/cobra) para interagir com microserviços pessoais via terminal. Funciona como um cliente de linha de comando para consumir APIs REST de três serviços:
 
 - **IDP** — Serviço de autenticação (geração de tokens JWT)
-- **Finance Manager** — Gestão financeira (contas, transferências, métodos de pagamento)
+- **Finance Manager** — Gestão financeira (contas, transferências, métodos de pagamento, contas a pagar)
 - **Password Vault** — Cofre de senhas (credenciais e códigos)
 
 ## Setup
@@ -132,6 +132,22 @@ rphpctl finance-manager create-payment-method -a acc123 -t "credit_card" -n "Nub
 rphpctl finance-manager get-payment-methods
 rphpctl finance-manager update-payment-method -i pm123 -n "Nubank Platinum"
 rphpctl finance-manager delete-payment-method -i pm123
+```
+
+#### Contas a Pagar (Debts)
+
+| Subcomando | Descrição | Flags |
+|---|---|---|
+| `get-debts` | Lista as contas a pagar | — |
+| `delete-debt` | Deleta uma conta a pagar | `-i, --id` (id da conta a pagar) |
+| `pay-debt` | Paga uma conta a pagar | `-i, --id` (id da conta a pagar), `-p, --payer-account-id` (id da conta pagadora) |
+
+**Exemplos:**
+
+```bash
+rphpctl finance-manager get-debts
+rphpctl finance-manager delete-debt -i debt123
+rphpctl finance-manager pay-debt -i debt123 -p acc456
 ```
 
 ---
